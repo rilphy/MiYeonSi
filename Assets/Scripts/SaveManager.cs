@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class SaveManager : MonoBehaviour
     public SaveData saveData = new SaveData();
     string path;
     string filename = "save";
+
+    [SerializeField]
+    private Button loadButton;
+    [SerializeField]
+    private Button resetButton;
 
     private void Awake()
     {
@@ -45,6 +51,7 @@ public class SaveManager : MonoBehaviour
     void Start()
     {
         //SavePlayerData();
+        UpdateButtonStateforSave();
     }
 
     // Update is called once per frame
@@ -52,11 +59,30 @@ public class SaveManager : MonoBehaviour
     {
         
     }
-
-
     public void SavePlayerData()
     {
         File.WriteAllText(path+filename, JsonUtility.ToJson(saveData)); //create a file from class data
         print(path);
+    }
+
+    public void DeletePlayerData()
+    {
+        File.Delete(path+filename);
+    }
+
+    public void UpdateButtonStateforSave()
+    {
+        //check save file exist
+        if(File.Exists(path+filename))
+        {
+            loadButton.interactable = true;
+            resetButton.interactable = true;
+
+        }
+        else
+        {
+            loadButton.interactable = false;
+            resetButton.interactable = false;
+        }
     }
 }

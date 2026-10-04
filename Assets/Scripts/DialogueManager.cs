@@ -211,12 +211,13 @@ public class DialogueManager : MonoBehaviour
             characterName.text = _dialogueData.name;
         
 
-        ShowCharacterIllust();
+        
         ShowBackgroundIllust();
+        ShowCharacterIllust();
         //Debug.Log(dialogueData.choices);
 
 
-        
+
 
 
         //when have a choices
