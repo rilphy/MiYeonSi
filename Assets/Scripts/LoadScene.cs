@@ -3,7 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    SceneManager sceneManager;
+
+    public static bool isLoadButtoned;
+
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,7 +31,10 @@ public class LoadScene : MonoBehaviour
 
     public void LoadMainScene()
     {
-        SceneLoad("MainScene");
+        isLoadButtoned = true;
+
+        SceneManager.LoadScene("MainScene");
+        
     }
 
     public void titleSceneLoad()

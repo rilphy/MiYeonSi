@@ -21,6 +21,7 @@ public class Dialogue   //class for json
     public string dialogueID;
     public string targetID;
     string playerName;  //input save data
+
 }
 [Serializable]
 public class DialogueArray
@@ -77,15 +78,26 @@ public class DialogueManager : MonoBehaviour
     bool isChoiceSelected = false;
     private float textDelay = 0.05f;
 
+    //public LoadScene loadScene;
+
+
+
     private void Awake()
     {
-        Debug.Log("Awake index:" + SaveManager.instance.saveData.dialogueIndex);
-        if (SaveManager.instance.saveData.dialogueIndex != 0 || SaveManager.instance.saveData.lineIndex != 0)
+        Debug.Log("isButtoned:" + LoadScene.isLoadButtoned);
+        //load save data if exist
+        if(LoadScene.isLoadButtoned==true)
         {
-            _dialogueIndex = SaveManager.instance.saveData.dialogueIndex;
-            _lineIndex = SaveManager.instance.saveData.lineIndex;
+            Debug.Log("Awake index:" + SaveManager.instance.saveData.dialogueIndex);
+            if (SaveManager.instance.saveData.dialogueIndex != 0 || SaveManager.instance.saveData.lineIndex != 0)
+            {
+                _dialogueIndex = SaveManager.instance.saveData.dialogueIndex;
+                _lineIndex = SaveManager.instance.saveData.lineIndex;
+            }
         }
     }
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
