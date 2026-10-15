@@ -481,7 +481,7 @@ public class DialogueManager : MonoBehaviour
 
     void ShowBackgroundIllust()
     {
-        if(!string.IsNullOrEmpty(_dialogueData.bgID))
+        if (!string.IsNullOrEmpty(_dialogueData.bgID))
         {
             string bgPath = "Assets/Resources/Illust/Background/" + _dialogueData.bgID + ".png";
 
